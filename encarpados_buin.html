@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encarpados Buin | Coberturas y Estructuras para Industria y Eventos</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Paleta: verde lona/carpa (materialidad real del rubro) + ámbar de luces cálidas de evento */
+        :root {
+            --canvas-green-dark: #16281F;   /* Verde lona oscuro, casi negro-bosque */
+            --canvas-green: #24402F;        /* Verde lona principal */
+            --canvas-green-mid: #35563F;    /* Verde medio para degradados */
+            --marigold: #E7A23A;            /* Ámbar cálido, luces de evento al atardecer */
+            --marigold-light: #F4C177;
+            --cream: #FAF6EC;               /* Fondo claro tipo lona cruda */
+            --text-dark: #1B2420;
+            --text-muted: #5C6960;
+            --white: #FFFFFF;
+            --shadow: 0 10px 25px -5px rgba(22, 40, 31, 0.15), 0 8px 10px -6px rgba(22, 40, 31, 0.1);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* Top Notification Bar */
+        .top-bar {
+            background: linear-gradient(90deg, var(--canvas-green-dark), var(--canvas-green));
+            color: var(--white);
+            text-align: center;
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--canvas-green-dark);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--marigold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--marigold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(22, 40, 31, 0.88), rgba(36, 64, 47, 0.92)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: var(--white);
+            padding: 6rem 5% 7rem 5%;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            background-color: rgba(231, 162, 58, 0.18);
+            color: var(--marigold-light);
+            border: 1px solid var(--marigold);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #E7EFE9;
+            margin-bottom: 2.5rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20BA5A;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--canvas-green-dark);
+        }
+
+        /* Key Highlights Banner */
+        .features-strip {
+            background-color: var(--white);
+            padding: 2.5rem 5%;
+            margin-top: -3rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            background-color: rgba(36, 64, 47, 0.08);
+            color: var(--canvas-green);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .feature-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Section Layout */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .section-title h2 {
+            font-size: 2.25rem;
+            color: var(--canvas-green-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Cobertura Geográfica */
+        .coverage-section {
+            background-color: #EFE9DA;
+        }
+
+        .coverage-box {
+            background: linear-gradient(135deg, var(--canvas-green-dark), var(--canvas-green-mid));
+            color: var(--white);
+            border-radius: var(--radius);
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .coverage-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--marigold-light);
+        }
+
+        .coverage-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .coverage-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .coverage-list i {
+            color: var(--marigold);
+        }
+
+        .coverage-map-placeholder {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Galería de Trabajos y Ubicaciones */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 30px -8px rgba(22, 40, 31, 0.25);
+        }
+
+        .project-img-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+
+        .project-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(22, 40, 31, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--white);
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-img-overlay {
+            opacity: 1;
+        }
+
+        .project-img-overlay i {
+            color: #25D366;
+            font-size: 1.3rem;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--marigold);
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--canvas-green-dark);
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-badge {
+            background-color: #F1EEE3;
+            color: var(--text-dark);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Protocolos y Normativa */
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .standard-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border-top: 4px solid var(--marigold);
+            box-shadow: var(--shadow);
+        }
+
+        .standard-card i {
+            font-size: 2.5rem;
+            color: var(--canvas-green);
+            margin-bottom: 1rem;
+        }
+
+        .standard-card h3 {
+            margin-bottom: 0.75rem;
+            color: var(--canvas-green-dark);
+        }
+
+        .standard-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--canvas-green-dark);
+            color: #B9C6BC;
+            padding: 3rem 5% 1.5rem 5%;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #B9C6BC;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-col a:hover {
+            color: var(--marigold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #2C4335;
+            padding-top: 1.5rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .coverage-box { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bar de Información Superior -->
+    <div class="top-bar">
+        <i class="fa-solid fa-location-dot"></i> Base Operativa en Buin | Servicio en toda la Región Metropolitana y Regiones de Chile
+    </div>
+
+    <!-- Navegación -->
+    <header>
+        <a href="#inicio" class="logo">
+            <i class="fa-solid fa-campground"></i>
+            <span>ENCARPADOS</span> BUIN
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#normas">Protocolos & Normas</a></li>
+                <li><a href="#cobertura">Cobertura</a></li>
+                <li><a href="#proyectos">Proyectos Realizados</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Principal / Hero -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <span class="badge"><i class="fa-solid fa-shield-check"></i> Encarpados Profesionales Certificados</span>
+            <h1>Estructuras y Carpas Profesionales para Todo Tipo de Eventos e Industrias</h1>
+            <p>Desde la comuna de Buin al resto del país. Brindamos soluciones de encarpado de alta resistencia, rigiéndonos estrictamente a todas las normas de seguridad y protocolos vigentes.</p>
+            <div class="cta-buttons">
+                <!-- NÚMERO DE PRUEBA: reemplaza 56999999999 por el WhatsApp real antes de publicar -->
+                <a href="https://wa.me/56999999999?text=Hola%2C%20necesito%20una%20cotizaci%C3%B3n%20para%20un%20servicio%20de%20encarpado" class="btn btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp
+                </a>
+                <a href="#proyectos" class="btn btn-secondary">
+                    Ver Ubicaciones & Trabajos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barra de Ventajas Destacadas -->
+    <div class="features-strip">
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-file-contract"></i></div>
+            <div class="feature-text">
+                <h4>Normas al Día</h4>
+                <p>Cumplimiento estricto de protocolos</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-map-pin"></i></div>
+            <div class="feature-text">
+                <h4>Base en Buin</h4>
+                <p>Despliegue rápido y eficiente</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="feature-text">
+                <h4>RM y Regiones</h4>
+                <p>Cobertura local y nacional</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Cumplimiento de Normas y Protocolos -->
+    <section id="normas">
+        <div class="section-title">
+            <h2>Seguridad, Protocolos y Estándares</h2>
+            <p>Un encarpado profesional garantiza la tranquilidad de tus invitados, personal de montaje y la integridad de tus instalaciones.</p>
+        </div>
+
+        <div class="standards-grid">
+            <div class="standard-card">
+                <i class="fa-solid fa-clipboard-check"></i>
+                <h3>Protocolos de Seguridad</h3>
+                <p>Implementamos rigurosos procedimientos de anclaje, evaluación de viento y planes de montaje seguro antes de cada proyecto.</p>
+            </div>
+            <div class="standard-card">
+                <i class="fa-solid fa-fire-extinguisher"></i>
+                <h3>Materiales Certificados</h3>
+                <p>Lonas e impermeables ignífugos de alta calidad, resistentes a la radiación UV, filtraciones de lluvia y ráfagas de viento.</p>
+            </div>
+            <div class="standard-card">
+                <i class="fa-solid fa-hard-hat"></i>
+                <h3>Personal Calificado</h3>
+                <p>Técnicos especialistas equipados con todos los elementos de protección personal (EPP) y capacitación continua en altura.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Cobertura Geográfica -->
+    <section id="cobertura" class="coverage-section">
+        <div class="coverage-box">
+            <div class="coverage-info">
+                <h3>Nuestra Cobertura Geográfica</h3>
+                <p>Estamos orgullosamente radicados en la <strong>comuna de Buin</strong>, lo que nos otorga una posición estratégica para atender de forma inmediata a la provincia del Maipo y toda la Región Metropolitana.</p>
+
+                <ul class="coverage-list">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Origen:</strong> Buin, Región Metropolitana.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Atención Principal:</strong> Toda la Región Metropolitana (Santiago, Paine, Talagante, San Bernardo, etc.).</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Proyectos Especiales:</strong> Cobertura a Regiones de todo Chile (V, VI, VII Región y más).</li>
+                </ul>
+            </div>
+            <div class="coverage-map-placeholder">
+                <i class="fa-solid fa-map-location-dot" style="font-size: 3.5rem; color: var(--marigold); margin-bottom: 1rem;"></i>
+                <h4>Operaciones desde Buin hacia todo Chile</h4>
+                <p style="font-size: 0.85rem; color: #D9E2DB; margin-top: 0.5rem;">Llegamos donde tu proyecto o evento lo requiera con logística propia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Proyectos y Ubicaciones Donde Se Realizó el Encarpado -->
+    <section id="proyectos">
+        <div class="section-title">
+            <h2>Ubicaciones y Trabajos Realizados</h2>
+            <p>Toca cualquier foto para cotizar por WhatsApp un trabajo similar en tu ubicación.</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Proyecto 1 -->
+            <a class="project-card" href="https://wa.me/56999999999?text=Hola%2C%20vi%20el%20Encarpado%20Estructural%20Matrimonial%20en%20Buin%20(Linderos)%20y%20quiero%20cotizar%20algo%20similar" target="_blank">
+                <div class="project-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80" alt="Encarpado para evento en Buin" class="project-img">
+                    <div class="project-img-overlay"><i class="fa-brands fa-whatsapp"></i> Cotizar este trabajo</div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fa-solid fa-location-dot"></i> Comuna de Buin (Sector Linderos)
+                    </div>
+                    <div class="project-title">Encarpado Estructural Matrimonial</div>
+                    <div class="project-desc">Montaje de gran envergadura con cielo entelado, iluminación integrada y protocolo de resistencia al viento.</div>
+                    <span class="project-badge">Evento Privado</span>
+                </div>
+            </a>
+
+            <!-- Proyecto 2 -->
+            <a class="project-card" href="https://wa.me/56999999999?text=Hola%2C%20vi%20la%20Cobertura%20Industrial%20Corporativa%20en%20Santiago%20y%20quiero%20cotizar%20algo%20similar" target="_blank">
+                <div class="project-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80" alt="Encarpado corporativo en Santiago" class="project-img">
+                    <div class="project-img-overlay"><i class="fa-brands fa-whatsapp"></i> Cotizar este trabajo</div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fa-solid fa-location-dot"></i> Santiago, Región Metropolitana
+                    </div>
+                    <div class="project-title">Cobertura Industrial Corporativa</div>
+                    <div class="project-desc">Instalación de estructura modular hermética para feria de empresas y lanzamientos comerciales.</div>
+                    <span class="project-badge">Empresarial</span>
+                </div>
+            </a>
+
+            <!-- Proyecto 3 -->
+            <a class="project-card" href="https://wa.me/56999999999?text=Hola%2C%20vi%20la%20Carpa%20de%20Alto%20Tr%C3%A1nsito%20en%20la%20VI%20Regi%C3%B3n%20y%20quiero%20cotizar%20algo%20similar" target="_blank">
+                <div class="project-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80" alt="Encarpado en región" class="project-img">
+                    <div class="project-img-overlay"><i class="fa-brands fa-whatsapp"></i> Cotizar este trabajo</div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fa-solid fa-location-dot"></i> VI Región (Rancagua / Machalí)
+                    </div>
+                    <div class="project-title">Carpa de Alto Tránsito a Regiones</div>
+                    <div class="project-desc">Despliegue logístico fuera de la RM para evento masivo con anclaje especial en terreno natural.</div>
+                    <span class="project-badge">Servicio a Región</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer / Pie de página -->
+    <footer id="contacto">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Encarpados Buin</h4>
+                <p>Especialistas en montaje de estructuras y carpas con los más altos estándares de calidad y seguridad.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Ubicación Base</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Comuna de Buin, Chile</p>
+                <p><i class="fa-solid fa-truck"></i> Cobertura RM y Todo el País</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto Directo</h4>
+                <!-- NÚMERO DE PRUEBA: reemplazar antes de publicar -->
+                <a href="https://wa.me/56999999999" target="_blank"><i class="fa-brands fa-whatsapp"></i> +56 9 9999 9999 (número de prueba)</a>
+                <p><i class="fa-solid fa-envelope"></i> contacto@encarpadosbuin.cl</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Encarpados Buin. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <!-- NÚMERO DE PRUEBA: reemplazar 56999999999 por el número real antes de publicar -->
+    <a href="https://wa.me/56999999999?text=Hola%2C%20quisiera%20cotizar%20un%20servicio%20de%20encarpado" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
